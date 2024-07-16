@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outil de création de facture</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Remplissez les informations de la facture</h1>
+        <form id="invoiceForm">
+            <label for="clientName">Nom du Client :</label>
+            <input type="text" id="clientName" name="clientName" required>
+
+            <label for="clientAddress">Adresse :</label>
+            <input type="text" id="clientAddress" name="clientAddress" required>
+
+            <label for="clientContact">Contact :</label>
+            <input type="text" id="clientContact" name="clientContact" required>
+
+            <label for="invoiceNumber">Numéro de Facture :</label>
+            <input type="text" id="invoiceNumber" name="invoiceNumber" required>
+
+            <label for="invoiceDate">Date :</label>
+            <input type="date" id="invoiceDate" name="invoiceDate" required>
+
+            <div id="itemsContainer">
+                <h3>Articles</h3>
+                <div class="item">
+                    <label for="itemDescription">Description de l'Article :</label>
+                    <input type="text" class="itemDescription" name="itemDescription" required>
+
+                    <label for="quantity">Quantité :</label>
+                    <input type="number" class="quantity" name="quantity" required>
+
+                    <label for="unitPrice">Prix Unitaire :</label>
+                    <input type="number" class="unitPrice" name="unitPrice" required>
+                </div>
+            </div>
+            <button type="button" id="addItemButton">Ajouter un article</button>
+            <button type="button" id="generateButton">Générer la Facture</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
