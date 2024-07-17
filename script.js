@@ -54,10 +54,7 @@ async function generateInvoice() {
     doc.text('Colombian Tabaco', 10, 25);
     doc.addImage(imgData, 'PNG', 100, 0, 50, 40);
 
-    // Adding Invoice title
-    doc.setFontSize(20);
-    doc.setTextColor(0, 0, 0);
-    doc.text('FACTURE', 160, 25);
+   
 
     // Adding client information
     doc.setFontSize(12);
