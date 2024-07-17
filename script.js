@@ -52,7 +52,7 @@ async function generateInvoice() {
     doc.setFontSize(24);
     doc.setTextColor(255, 255, 255);
     doc.text('Colombian Tabaco', 10, 25);
-    doc.addImage(imgData, 'PNG', 300, 10, 20, 40);
+    doc.addImage(imgData, 'PNG', 200, 10, 20, 40);
 
     // Adding Invoice title
     doc.setFontSize(20);
