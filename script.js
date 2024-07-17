@@ -43,8 +43,8 @@ async function generateInvoice() {
 
     // Header background with gradient
     const gradient = doc.context2d.createLinearGradient(0, 0, 210, 0);
-    gradient.addColorStop(0, '#00416A');
-    gradient.addColorStop(1, '#E4E5E6');
+    gradient.addColorStop(0, '#343434');
+    gradient.addColorStop(1, '#343434');
     doc.context2d.fillStyle = gradient;
     doc.context2d.fillRect(0, 0, 210, 40);
 
