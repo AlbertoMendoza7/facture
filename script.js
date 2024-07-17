@@ -1,6 +1,7 @@
 window.addEventListener('load', () => {
     document.getElementById('generateButton').addEventListener('click', generateInvoice);
     document.getElementById('addItemButton').addEventListener('click', addItem);
+    console.log('Event listeners added.');
 });
 
 function addItem() {
@@ -22,7 +23,7 @@ function addItem() {
     itemsContainer.appendChild(itemDiv);
 }
 
-function generateInvoice() {
+async function generateInvoice() {
     const { jsPDF } = window.jspdf;
 
     const clientName = document.getElementById('clientName').value;
@@ -37,6 +38,9 @@ function generateInvoice() {
 
     const doc = new jsPDF();
 
+    // Load image as base64
+    const imgData = await getImageAsBase64('tabac.png');
+
     // Header background with gradient
     const gradient = doc.context2d.createLinearGradient(0, 0, 210, 0);
     gradient.addColorStop(0, '#00416A');
@@ -48,6 +52,7 @@ function generateInvoice() {
     doc.setFontSize(24);
     doc.setTextColor(255, 255, 255);
     doc.text('Colombian Tabaco', 10, 25);
+    doc.addImage(imgData, 'PNG', 70, 10, 20, 20);
 
     // Adding Invoice title
     doc.setFontSize(20);
@@ -120,4 +125,23 @@ function generateInvoice() {
 
     // Save the PDF with the invoice number
     doc.save(`facture_${invoiceNumber}.pdf`);
+
+    // Utility function to get image as base64
+    function getImageAsBase64(url) {
+        return new Promise((resolve, reject) => {
+            const img = new Image();
+            img.crossOrigin = 'Anonymous';
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                canvas.width = img.width;
+                canvas.height = img.height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0);
+                const dataURL = canvas.toDataURL('image/png');
+                resolve(dataURL);
+            };
+            img.onerror = (err) => reject(err);
+            img.src = url;
+        });
+    }
 }
