@@ -117,7 +117,7 @@ async function generateInvoice() {
     doc.text('Merci pour votre achat!', 90, 290);
 
     // Save the PDF with the invoice number
-    doc.save(`Facture_${invoiceNumber}_${clientType}_${clientName}.pdf`);
+    doc.save(`Facture_${clientType}_${clientName}_${invoiceNumber}.pdf`);
 
     // Utility function to get image as base64
     function getImageAsBase64(url) {
