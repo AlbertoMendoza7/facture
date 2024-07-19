@@ -10,7 +10,18 @@
     <div class="container">
         <h1>Remplissez les informations de la facture</h1>
         <form id="invoiceForm">
-            <label for="clientName">Nom du Client :</label>
+            <div class="client-type-container">
+                <label for="clientTypeEntreprise">
+                    <input type="radio" id="clientTypeEntreprise" name="clientType" value="Entreprise" checked>
+                    Entreprise
+                </label>
+                <label for="clientTypeParticulier">
+                    <input type="radio" id="clientTypeParticulier" name="clientType" value="Particulier">
+                    Particulier
+                </label>
+            </div>
+
+            <label for="clientName">Nom :</label>
             <input type="text" id="clientName" name="clientName" required>
 
             <label for="clientAddress">Adresse :</label>

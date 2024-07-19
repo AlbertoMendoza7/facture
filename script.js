@@ -26,6 +26,7 @@ function addItem() {
 async function generateInvoice() {
     const { jsPDF } = window.jspdf;
 
+    const clientType = document.querySelector('input[name="clientType"]:checked').value;
     const clientName = document.getElementById('clientName').value;
     const clientAddress = document.getElementById('clientAddress').value;
     const clientContact = document.getElementById('clientContact').value;
@@ -53,13 +54,10 @@ async function generateInvoice() {
     doc.text('Colombian Tabaco', 10, 25);
     doc.addImage(imgData, 'PNG', 160, 0, 50, 40);
 
-
-   
-
     // Adding client information
     doc.setFontSize(12);
     doc.setTextColor(0, 0, 0);
-    doc.text(`Nom: ${clientName}`, 10, 50);
+    doc.text(`${clientType}: ${clientName}`, 10, 50);
     doc.text(`Adresse: ${clientAddress}`, 10, 60);
     doc.text(`Contact: ${clientContact}`, 10, 70);
     doc.text(`Facture #: ${invoiceNumber}`, 150, 50);
@@ -111,8 +109,6 @@ async function generateInvoice() {
     doc.setTextColor(0, 0, 0);
     doc.text('Total: ' + totalInvoicePrice.toString() + '$', 155, currentY + 7);
 
-    
-
     // Adding footer with line
     doc.setLineWidth(0.5);
     doc.setDrawColor(0, 0, 0);
@@ -121,7 +117,7 @@ async function generateInvoice() {
     doc.text('Merci pour votre achat!', 90, 290);
 
     // Save the PDF with the invoice number
-    doc.save(`facture_${invoiceNumber}.pdf`);
+    doc.save(`Facture_${invoiceNumber}_${clientType}_${clientName}.pdf`);
 
     // Utility function to get image as base64
     function getImageAsBase64(url) {

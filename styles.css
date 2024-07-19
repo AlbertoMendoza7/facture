@@ -66,3 +66,20 @@ button:hover {
 #addItemButton:hover {
     background-color: #218838;
 }
+
+/* Ajout des styles pour aligner les boutons radio */
+.client-type-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.client-type-container label {
+    margin: 0 10px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.client-type-container input[type="radio"] {
+    margin-right: 5px;
+}
